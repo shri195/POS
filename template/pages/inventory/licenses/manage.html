@@ -67,6 +67,18 @@
 											<td><b><?php _e('Notes'); ?></b></td>
 											<td><?php echo $license['notes']; ?></td>
 										</tr>
+										<tr>
+											<td><b><?php _e('Purchase Date'); ?></b></td>
+											<td><?php echo $license['purchase_date']; ?></td>
+										</tr>
+										<tr>
+											<td><b><?php _e('Expirory Date'); ?></b></td>
+											<td><?php echo $license['expirory_date']; ?></td>
+										</tr>
+										<tr>
+											<td><b><?php _e('Purchase Order'); ?></b></td>
+											<td><?php echo $license['purchase_order']; ?></td>
+										</tr>
 									</tbody>
 								</table>
 							</div>
@@ -175,6 +187,29 @@
 									<input type="text" class="form-control" id="serial" name="serial" value="<?php echo mc_decrypt($license['serial']); ?>">
 								</div>
 							</div>
+
+							<div class="form-group">
+								<label for="purchase_date" class="col-sm-2 control-label"><?php _e('Purchase Date'); ?></label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="purchase_date" name="purchase_date" value="<?php echo $license['purchase_date']; ?>"><i class="fa fa-calendar"></i>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="expirory_date" class="col-sm-2 control-label"><?php _e('Expirory Date'); ?></label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="expirory_date" name="expirory_date" value="<?php echo $license['expirory_date']; ?>" ><i class="fa fa-calendar"></i>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="purchase_order" class="col-sm-2 control-label"><?php _e('Purchase Order Number'); ?></label>
+								<div class="col-sm-8">
+								<input type="text" class="form-control" id="purchase_order" name="purchase_order" value="<?php echo $license['purchase_order']; ?>">
+								</div>
+							</div>
+
+
 							<div class="form-group">
 								<label for="statusid" class="col-sm-2 control-label"><?php _e('Status'); ?> *</label>
 								<div class="col-sm-8">

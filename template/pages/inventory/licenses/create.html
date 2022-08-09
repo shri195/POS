@@ -56,6 +56,27 @@
 											</div>
 
 											<div class="form-group">
+												<label for="purchase_date"><?php _e('Purchase Date'); ?></label>
+												<div class="input-group">
+													<input type="text" class="form-control" id="purchase_date" name="purchase_date">
+													<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label for="expirory_date"><?php _e('Expirory Date'); ?></label>
+												<div class="input-group">
+													<input type="text" class="form-control" id="expirory_date" name="expirory_date">
+													<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label for="purchase_order"><?php _e('Purchase Order Number'); ?></label>
+												<input type="text" class="form-control" id="purchase_order" name="purchase_order">
+											</div>
+
+											<div class="form-group">
 												<label for="statusid"><?php _e('Status'); ?> *</label>
 												<select class="form-control select2 select2-hidden-accessible" id="statusid" name="statusid" style="width: 100%;" tabindex="-1" aria-hidden="true">
 													<?php foreach ($labels as $label) { echo "<option value='".$label['id']."'>".$label['name']."</option>"; } ?>
