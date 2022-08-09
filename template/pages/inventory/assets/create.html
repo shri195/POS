@@ -38,7 +38,7 @@
 									</div>
 
 									<div class="form-group">
-										<label for="name"><?php _e('Asset Name'); ?></label>
+										<label for="name"><?php _e('User Name'); ?></label>
 										<input type="text" class="form-control" id="name" name="name">
 									</div>
 
@@ -83,13 +83,22 @@
 									</div>
 
 									<div class="form-group">
-										<label for="value"><?php _e('Value'); ?></label>
+										<label for="value"><?php _e('Cost'); ?></label>
 										<input type="text" class="form-control" id="value" name="value">
 									</div>
-
 								</div>
 
 								<div class="col-md-6">
+									<div class="form-group">
+										<label for="category"><?php _e('MainCategory'); ?></label>
+										<select class="form-control" id="maincategory" name="maincategory" style="width: 100%;" tabindex="-1" aria-hidden="true">
+										<option value=''>Select</option>
+										<option value='Air Conditioner'>Air Conditioner</option>
+										<option value='Electrical'>Electrical</option>
+										<option value='Furniture & Fixtures'>Furniture & Fixtures</option>
+										</select>
+									</div>
+
 									<div class="form-group">
 										<label for="category"><?php _e('Category'); ?> *</label>
 										<select class="form-control select2tag select2-hidden-accessible" id="category" name="category" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
@@ -143,6 +152,14 @@
 									<?php if(!$isAdmin) { ?><input type="hidden" name="adminid" value="0"><?php } ?>
 
 									<div class="form-group">
+										<label for="warrenty_expiry_date"><?php _e('Warrenty Expiry Date'); ?></label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="warrenty_expiry_date" name="warrenty_expiry_date">
+											<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+										</div>
+									</div>
+
+									<!-- <div class="form-group">
 										<label for="userid"><?php _e('Asset User'); ?></label>
 										<select class="form-control select2 select2-hidden-accessible" id="userid" name="userid" style="width: 100%;" tabindex="-1" aria-hidden="true">
 											<option value="0"><?php _e('None'); ?></option>
@@ -169,7 +186,7 @@
 											<input type="number" class="form-control" id="warranty_months" name="warranty_months">
 											<span class="input-group-addon"><?php _e('months'); ?></span>
 										</div>
-									</div>
+									</div> -->
 
 								</div>
 

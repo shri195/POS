@@ -86,14 +86,14 @@
 											<td><b><?php _e('Asset Admin'); ?></b></td>
 											<td><?php echo getSingleValue('people','name',$asset['adminid']); ?></td>
 										</tr>
-										<tr>
+										<!-- <tr>
 											<td><b><?php _e('Asset User'); ?></b></td>
 											<td>
 												<?php if(in_array("editUser",$perms)) { ?>
 													<a href="?route=people/users/edit&id=<?php echo $asset['userid']; ?>"><?php echo getSingleValue('people','name',$asset['userid']); ?></a>
 												<?php } else echo getSingleValue('people','name',$asset['userid']); ?>
 											</td>
-										</tr>
+										</tr> -->
 										<tr>
 											<td><b><?php _e('Purchase Date'); ?></b></td>
 											<td><?php echo $asset['purchase_date']; ?></td>
@@ -109,7 +109,7 @@
 											<td><?php echo $asset['value']; ?></td>
 										</tr>
 
-										<tr>
+										<!-- <tr>
 											<td><b><?php _e('Condition'); ?></b></td>
 											<td><?php echo $asset['condition']; ?></td>
 										</tr>
@@ -117,12 +117,12 @@
 										<tr>
 											<td><b><?php _e('Warranty (months)'); ?></b></td>
 											<td><?php echo $asset['warranty_months']; ?></td>
-										</tr>
+										</tr> 
 
 										<tr>
 											<td><b><?php _e('Removal Date'); ?></b></td>
 											<td><?php echo $asset['removal_date']; ?></td>
-										</tr>
+										</tr>-->
 
 										<tr>
 											<td><b><?php _e('Notes'); ?></b></td>
@@ -427,7 +427,7 @@
 								</div>
 
 								<div class="form-group">
-									<label for="name"><?php _e('Asset Name'); ?></label>
+									<label for="name"><?php _e('User Name'); ?></label>
 									<input type="text" class="form-control" id="name" name="name" value="<?php echo $asset['name']; ?>">
 								</div>
 
@@ -458,13 +458,26 @@
 								</div>
 
 								<div class="form-group">
-									<label for="value"><?php _e('Value'); ?></label>
+									<label for="value"><?php _e('Cost'); ?></label>
 									<input type="text" class="form-control" id="value" name="value" value="<?php echo $asset['value']; ?>">
 								</div>
 
 							</div>
 
 							<div class="col-md-6">
+								
+								<div class="form-group">
+									<label for="category"><?php _e('MainCategory'); ?></label>
+									<select class="form-control" id="maincategory" name="maincategory" style="width: 100%;" tabindex="-1" aria-hidden="true">
+									<option value=''>Select</option>
+									<option value='Air Conditioner' <?php if($asset['maincategory']=="Air Conditioner") echo "selected";?>>Air Conditioner</option>
+									<option value='Electrical' <?php if($asset['maincategory']=="Electrical") echo "selected";?>>Electrical</option>
+									<option value='Furniture & Fixtures' <?php if($asset['maincategory']=="Furniture & Fixtures") echo "selected";?>>Furniture & Fixtures</option>
+									</select>
+								</div>
+								
+								
+								
 								<div class="form-group">
 									<label for="category"><?php _e('Category'); ?> *</label>
 									<select class="form-control select2tag select2-hidden-accessible" id="category" name="category" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
@@ -515,6 +528,14 @@
 								</div>
 
 								<div class="form-group">
+									<label for="warrenty_expiry_date"><?php _e('Warrenty Expiry Date'); ?></label>
+									<div class="input-group">
+										<input type="text" class="form-control" id="warrenty_expiry_date" name="warrenty_expiry_date" value="<?php echo $asset['warrenty_expiry_date']; ?>">
+										<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+									</div>
+								</div>
+
+								<!-- <div class="form-group">
 									<label for="userid"><?php _e('Asset User'); ?></label>
 									<select class="form-control select2 select2-hidden-accessible" id="userid" name="userid" style="width: 100%;" tabindex="-1" aria-hidden="true">
 										<option value="0"><?php _e('None'); ?></option>
@@ -541,7 +562,7 @@
 										<input type="number" class="form-control" id="warranty_months" name="warranty_months" value="<?php echo $asset['warranty_months']; ?>">
 										<span class="input-group-addon"><?php _e('months'); ?></span>
 									</div>
-								</div>
+								</div> -->
 
 							</div>
 

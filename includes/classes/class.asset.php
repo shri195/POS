@@ -39,15 +39,17 @@ class Asset extends App {
 
     	$lastid = $database->insert("assets", [
     		"categoryid" => $categoryid,
+            "maincategory"=>$data['maincategory'],
+            "warrenty_expiry_date"=>$data['warrenty_expiry_date'],
     		"adminid" => $data['adminid'],
     		"clientid" => $data['clientid'],
-    		"userid" => $data['userid'],
+    		// "userid" => $data['userid'],
             "manufacturerid" => $manufacturerid,
     		"modelid" => $modelid,
     		"supplierid" => $supplierid,
     		"statusid" => $data['statusid'],
     		"purchase_date" => $data['purchase_date'],
-    		"warranty_months" => $data['warranty_months'],
+    		// "warranty_months" => $data['warranty_months'],
     		"tag" => $data['tag'],
     		"name" => $data['name'],
     		"serial" => $data['serial'],
@@ -55,8 +57,8 @@ class Asset extends App {
             "locationid" => $locationid,
             "purchase_order" => $data['purchase_order'],
             "value" => $data['value'],
-            "condition" => $data['condition'],
-            "removal_date" => $data['removal_date']
+            // "condition" => $data['condition'],
+            // "removal_date" => $data['removal_date']
     	]);
     	if ($lastid == "0") { return "11"; } else { logSystem("Asset Added - ID: " . $lastid); return "10"; }
     	}
@@ -94,18 +96,19 @@ class Asset extends App {
             $locationid = $database->get("locations", "id", [ "AND" => [ "name" => $data['location'], "clientid" => $data['clientid'] ] ]);
             if($locationid == "") $locationid = $database->insert("locations", [ "name" => $data['location'], "clientid" => $data['clientid'] ]);
         }
-
     	$database->update("assets", [
             "categoryid" => $categoryid,
+            "maincategory"=>$data['maincategory'],
+            "warrenty_expiry_date"=>$data['warrenty_expiry_date'],
     		"adminid" => $data['adminid'],
     		"clientid" => $data['clientid'],
-    		"userid" => $data['userid'],
+    		// "userid" => $data['userid'],
             "manufacturerid" => $manufacturerid,
     		"modelid" => $modelid,
     		"supplierid" => $supplierid,
     		"statusid" => $data['statusid'],
     		"purchase_date" => $data['purchase_date'],
-    		"warranty_months" => $data['warranty_months'],
+    		// "warranty_months" => $data['warranty_months'],
     		"tag" => $data['tag'],
     		"name" => $data['name'],
     		"serial" => $data['serial'],
@@ -113,8 +116,8 @@ class Asset extends App {
             "locationid" => $locationid,
             "purchase_order" => $data['purchase_order'],
             "value" => $data['value'],
-            "condition" => $data['condition'],
-            "removal_date" => $data['removal_date']
+            // "condition" => $data['condition'],
+            // "removal_date" => $data['removal_date']
     	], [ "id" => $data['id'] ]);
     	logSystem("Asset Edited - ID: " . $data['id']);
     	return "20";
