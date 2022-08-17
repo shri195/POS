@@ -16,7 +16,7 @@
 	    <?php endif; ?>
 	  <!-- Small boxes (Stat box) -->
        <div class="row">
-         <div class="col-lg-3 col-xs-6">
+         <div class="col-lg-6 col-xs-12">
            <!-- small box -->
            <div class="small-box bg-blue">
              <div class="inner">
@@ -30,7 +30,7 @@
            </div>
          </div>
          <!-- ./col -->
-         <div class="col-lg-3 col-xs-6">
+         <div class="col-lg-6 col-xs-12">
            <!-- small box -->
            <div class="small-box bg-green">
              <div class="inner">
@@ -43,49 +43,7 @@
              <a href="?route=inventory/licenses" class="small-box-footer"><?php _e('View all'); ?> <i class="fa fa-arrow-circle-right"></i></a>
            </div>
          </div>
-         <!-- ./col -->
-		 <div class="col-lg-3 col-xs-6">
-           <!-- small box -->
-           <div class="small-box bg-yellow">
-             <div class="inner">
-               <h3><?php echo $sumProjects; ?></h3>
-               <p><?php _e('Projects'); ?></p>
-             </div>
-             <div class="icon">
-               <i class="fa fa-lightbulb-o"></i>
-             </div>
-             <a href="?route=projects" class="small-box-footer"><?php _e('View all'); ?> <i class="fa fa-arrow-circle-right"></i></a>
-           </div>
-         </div>
-         <!-- ./col -->
-         <div class="col-lg-3 col-xs-6">
-           <!-- small box -->
-		   <?php if($isAdmin) { ?>
-	           <div class="small-box bg-purple">
-	             <div class="inner">
-	               <h3><?php echo $sumClients; ?></h3>
-	               <p><?php _e('Clients'); ?></p>
-	             </div>
-	             <div class="icon">
-	               <i class="fa fa-briefcase"></i>
-	             </div>
-	             <a href="?route=clients" class="small-box-footer"><?php _e('View all'); ?> <i class="fa fa-arrow-circle-right"></i></a>
-	           </div>
-		   <?php } ?>
-		   <?php if(!$isAdmin) { ?>
-			   <div class="small-box bg-red">
-				 <div class="inner">
-				   <h3><?php echo $sumUsers; ?></h3>
-				   <p><?php _e('Users'); ?></p>
-				 </div>
-				 <div class="icon">
-				   <i class="fa fa-briefcase"></i>
-				 </div>
-				 <a href="?route=people/users" class="small-box-footer"><?php _e('View all'); ?> <i class="fa fa-arrow-circle-right"></i></a>
-			   </div>
-		   <?php } ?>
-         </div>
-         <!-- ./col -->
+         
 
        </div>
        <!-- /.row -->
