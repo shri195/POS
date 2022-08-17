@@ -581,6 +581,8 @@ if ($route == "inventory/attributes/labels") { isAuthorized("manageData"); $labe
 // ASSET CATEGORIES
 if ($route == "inventory/attributes/assetcategories") { isAuthorized("manageData"); $categories = getTable("assetcategories"); $pageTitle = __("Asset Categories"); }
 
+//Departments
+if ($route == "inventory/attributes/departments") { isAuthorized("manageData"); $departments = getTable("departments"); $pageTitle = __("Departments"); }
 
 // LICENSE CATEGORIES
 if ($route == "inventory/attributes/licensecategories") { isAuthorized("manageData"); $categories = getTable("licensecategories"); $pageTitle = __("License Categories"); }

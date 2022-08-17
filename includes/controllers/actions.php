@@ -294,6 +294,19 @@ switch($_POST['action']) {
 		isAuthorized("manageData"); $status = Attribute::deleteLocation($_POST['id']);
         break;
 
+	// Departments
+	case "addDepartment":
+		isAuthorized("manageData"); $status = Attribute::addDepartment($_POST);
+        break;
+
+	case "editDepartment":
+		isAuthorized("manageData"); $status = Attribute::editDepartment($_POST);
+        break;
+
+	case "deleteDepartment":
+		isAuthorized("manageData"); $status = Attribute::deleteDepartment($_POST['id']);
+        break;
+
 	// asset models
 	case "addModel":
 		isAuthorized("manageData"); $status = Attribute::addModel($_POST);

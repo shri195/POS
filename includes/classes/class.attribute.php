@@ -128,6 +128,29 @@ class Attribute extends App {
     	}
 
 
+	// ----------------------------------------------------------------------------------------------
+    // Departments
+    public static function addDepartment($data) {
+    	global $database;
+    	$lastid = $database->insert("departments", [ "name" => $data['name']]);
+    	if ($lastid == "0") { return "11"; } else { logSystem("Department Added - ID: " . $lastid); return "10"; }
+    	}
+
+    public static function editDepartment($data) {
+    	global $database;
+    	$database->update("departments", [ "name" => $data['name']], [ "id" => $data['id'] ]);
+    	logSystem("Department Edited - ID: " . $data['id']);
+    	return "20";
+    	}
+
+    public static function deleteDepartment($id) {
+    	global $database;
+        $database->delete("departments", [ "id" => $id ]);
+    	logSystem("Department Deleted - ID: " . $id);
+    	return "30";
+    	}
+
+
     // ----------------------------------------------------------------------------------------------
     // ASSET MODELS
 

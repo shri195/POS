@@ -30,6 +30,10 @@ switch($_GET['modal']) {
     case "manufacturers/edit":
         $manufacturer = getRowById("manufacturers",$_GET['id']);
         break;
+    
+    case "departments/edit":
+        $department = getRowById("departments",$_GET['id']);
+        break;
 
     case "locations/add":
         $clients = getTable("clients");
