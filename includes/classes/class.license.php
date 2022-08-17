@@ -16,6 +16,7 @@ class License extends App {
     		"notes" => $data['notes'],
 			"purchase_date" =>$data['purchase_date'],
 			"expirory_date" =>$data['expirory_date'],
+			"departmentId" => $data['departmentId'],
 			"purchase_order" =>$data['purchase_order']
     	]);
     	if ($lastid == "0") { return "11"; } else { logSystem("License Added - ID: " . $lastid); return "10"; }
@@ -34,6 +35,7 @@ class License extends App {
     		"notes" => $data['notes'],
 			"purchase_date" =>$data['purchase_date'],
 			"expirory_date" =>$data['expirory_date'],
+			"departmentId" => $data['departmentId'],
 			"purchase_order" =>$data['purchase_order']
     	], [ "id" => $data['id'] ]);
     	logSystem("License Edited - ID: " . $data['id']);

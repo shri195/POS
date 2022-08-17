@@ -151,6 +151,7 @@ if ($route == "inventory/assets/create") {
 	$categories = getTable("assetcategories");
 	$labels = getTable("labels");
 	$suppliers = getTable("suppliers");
+	$departments = getTable("departments");
 
 	$pageTitle = __("Create Asset");
 
@@ -180,6 +181,7 @@ if ($route == "inventory/assets/manage") {
 	$labels = getTable("labels");
 	$licenses = getTable("licenses");
 	$suppliers = getTable("suppliers");
+	$departments = getTable("departments");
 	$files = getTableFiltered("files","assetid",$_GET['id']);
 	$pageTitle = $asset['tag'];
 	}
@@ -205,9 +207,10 @@ if ($route == "inventory/licenses/manage") {
 	$assignedassets = getTableFiltered("licenses_assets","licenseid",$_GET['id']);
 	$assets = getTable("assets");
 	$suppliers = getTable("suppliers");
+	$departments = getTable("departments");
 	$pageTitle = $license['tag'];
 	}
-if ($route == "inventory/licenses/create") { isAuthorized("addLicense"); $suppliers = getTable("suppliers"); $categories = getTable("licensecategories"); $labels = getTable("labels"); $clients = getTable("clients"); }
+if ($route == "inventory/licenses/create") { isAuthorized("addLicense"); $departments = getTable("departments");$suppliers = getTable("suppliers"); $categories = getTable("licensecategories"); $labels = getTable("labels"); $clients = getTable("clients"); }
 
 // PROJECTS
 if ($route == "projects") {
