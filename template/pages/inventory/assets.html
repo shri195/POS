@@ -24,6 +24,8 @@
 										<th><?php _e('User Name'); ?></th>
 										<th><?php _e('Model'); ?></th>
 										<th><?php _e('Serial Number'); ?></th>
+										<th><?php _e('Purchase Date'); ?></th>
+										<th><?php _e('Warrenty Date'); ?></th>
 										<th><?php _e('Related Entities'); ?></th>
 										<th><?php _e('Status'); ?></th>
 										<th class="text-right"></th>
@@ -38,6 +40,8 @@
 											<td><?php if(in_array("manageAsset",$perms)) { ?><a href='?route=inventory/assets/manage&id=<?php echo $asset['id']; ?>'><?php echo $asset['name']; ?></a><?php } else echo $asset['name']; ?></td>
 											<td><?php echo getSingleValue("manufacturers","name",$asset['manufacturerid']); ?> <?php echo getSingleValue("models","name",$asset['modelid']); ?></td>
 											<td><?php echo $asset['serial']; ?></td>
+											<td><?php echo $asset['purchase_date']; ?></td>
+											<td><?php echo $asset['warrenty_expiry_date']; ?></td>
 											<td>
 												<?php if($asset['clientid'] != 0) { ?>
 													<a href='<?php if(in_array("manageClient",$perms)) { ?>?route=clients/manage&id=<?php echo $asset['clientid']; ?><?php } else echo "#"; ?>'>
