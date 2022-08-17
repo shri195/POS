@@ -415,33 +415,45 @@ function sendSMS($mobile,$sms,$clientid="0",$peopleid="0") { //send sms
 // Encrypt Function
 function mc_encrypt($encrypt){
 	global $config;
-	$key = $config['encryption_key'];
+	$encryption_key = $config['encryption_key'];
     $encrypt = serialize($encrypt);
-    $iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_CBC), MCRYPT_DEV_URANDOM);
-    $key = pack('H*', $key);
-    $mac = hash_hmac('sha256', $encrypt, substr(bin2hex($key), -32));
-    $passcrypt = mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $key, $encrypt.$mac, MCRYPT_MODE_CBC, $iv);
-    $encoded = base64_encode($passcrypt).'|'.base64_encode($iv);
+
+	// Store the cipher method
+	$ciphering = "AES-128-CTR";
+
+	// Use OpenSSl Encryption method
+	$iv_length = openssl_cipher_iv_length($ciphering);
+	$options = 0;
+
+	// Non-NULL Initialization Vector for encryption
+	$encryption_iv = '1234567891011121';
+
+	// Use openssl_encrypt() function to encrypt the data
+	$encoded = openssl_encrypt($encrypt, $ciphering,
+			$encryption_key, $options, $encryption_iv);
+
     return $encoded;
 }
 // Decrypt Function
 function mc_decrypt($decrypt){
 	global $config;
-	$key = $config['encryption_key'];
-    $decrypt = explode('|', $decrypt.'|');
-    $decoded = base64_decode($decrypt[0]);
-    $iv = base64_decode($decrypt[1]);
-    if(strlen($iv)!==mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_CBC)){ return false; }
-    $key = pack('H*', $key);
-    $decrypted = trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, $decoded, MCRYPT_MODE_CBC, $iv));
-    $mac = substr($decrypted, -64);
-    $decrypted = substr($decrypted, 0, -64);
-    $calcmac = hash_hmac('sha256', $decrypted, substr(bin2hex($key), -32));
-    if($calcmac!==$mac){ return false; }
+	$decryption_key = $config['encryption_key'];
+	// Non-NULL Initialization Vector for decryption
+	$decryption_iv = '1234567891011121';
+	// Store the cipher method
+	$ciphering = "AES-128-CTR";
+
+	// Use OpenSSl Encryption method
+	$iv_length = openssl_cipher_iv_length($ciphering);
+	$options = 0;
+
+	// Use openssl_decrypt() function to decrypt the data
+	$decrypted=openssl_decrypt ($decrypt, $ciphering, 
+		$decryption_key, $options, $decryption_iv);
+
     $decrypted = unserialize($decrypted);
     return $decrypted;
 }
-
 
 // ----------------------------------------------------------------------------------------------
 // GRAPHS
