@@ -213,58 +213,7 @@
 
                   </ul>
               </li>
-              <?php } ?>
-
-              <?php if(in_array("viewProjects",$perms)) { ?>
-              <li <?php if(strpos($route,'projects') !== false) echo 'class="active"'; ?>>
-                  <a href="?route=projects">
-                      <i class="fa fa-lightbulb-o fa-fw"></i> <span><?php _e('Projects'); ?></span>
-                  </a>
-              </li>
-              <?php } ?>
-
-              <?php if(in_array("viewTickets",$perms)) { ?>
-              <li class="treeview<?php if(strpos($route,'tickets') !== false) echo ' active'; ?>">
-                  <a href="#">
-                      <i class="fa fa-tag fa-fw"></i> <span><?php _e('Tickets'); ?></span>
-                      <i class="fa fa-angle-left pull-right"></i>
-                  </a>
-                  <ul class="treeview-menu">
-                      <li <?php if(strpos($route,'tickets/ar') !== false) echo 'class="active"'; ?>><a href="?route=tickets/ar"><i class="fa fa-angle-double-right"></i> <?php _e('Awaiting Reply'); ?><span class="label label-success pull-right"><?php echo $arTicketsCount; ?></span></a></li>
-                      <li <?php if(strpos($route,'tickets/active') !== false) echo 'class="active"'; ?>><a href="?route=tickets/active"><i class="fa fa-angle-double-right"></i> <?php _e('Active Tickets'); ?><span class="label pull-right"><?php echo $activeTicketsCount; ?></span></a></li>
-                      <li <?php if(strpos($route,'tickets/all') !== false) echo 'class="active"'; ?>><a href="?route=tickets/all"><i class="fa fa-angle-double-right"></i> <?php _e('All Tickets'); ?><span class="label pull-right"><?php echo $allTicketsCount; ?></span></a></li>
-                  </ul>
-              </li>
-              <?php } ?>
-
-              <?php if(in_array("viewIssues",$perms)) { ?>
-              <li class="treeview<?php if(strpos($route,'issues') !== false) echo ' active'; ?>">
-                  <a href="#">
-                      <i class="fa fa-tasks fa-fw"></i> <span><?php _e('Issues'); ?></span>
-                      <i class="fa fa-angle-left pull-right"></i>
-                  </a>
-                  <ul class="treeview-menu">
-                      <li <?php if(strpos($route,'issues/active') !== false) echo 'class="active"'; ?>><a href="?route=issues/active"><i class="fa fa-angle-double-right"></i> <?php _e('Active Issues'); ?><span class="label label-success pull-right"><?php echo $activeIssuesCount; ?></span></a></li>
-                      <li <?php if(strpos($route,'issues/all') !== false) echo 'class="active"'; ?>><a href="?route=issues/all"><i class="fa fa-angle-double-right"></i> <?php _e('All Issues'); ?><span class="label pull-right"><?php echo $allIssuesCount; ?></span></a></li>
-                  </ul>
-              </li>
-              <?php } ?>
-
-              <?php if(in_array("viewKB",$perms)) { ?>
-              <li <?php if(strpos($route,'kb') !== false) echo 'class="active"'; ?>>
-                  <a href="?route=kb">
-                      <i class="fa fa-book fa-fw"></i> <span><?php _e('Knowledge Base'); ?></span>
-                  </a>
-              </li>
-              <?php } ?>
-
-              <?php if(in_array("viewMonitoring",$perms)) { ?>
-              <li <?php if(strpos($route,'monitoring') !== false) echo 'class="active"'; ?>>
-                  <a href="?route=monitoring">
-                      <i class="fa fa-heartbeat fa-fw"></i> <span><?php _e('Monitoring'); ?></span>
-                  </a>
-              </li>
-              <?php } ?>
+              <?php } ?>      
 
               <?php if(in_array("viewReports",$perms)) { ?>
               <li <?php if(strpos($route,'reports') !== false) echo 'class="active"'; ?>>
