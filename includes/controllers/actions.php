@@ -136,6 +136,11 @@ switch($_POST['action']) {
 		isAuthorized("deleteLicense"); $status = License::delete($_POST['id']);
 		break;
 
+	case "importLicenses":
+		$status = License::importLicenses($_FILES);
+		header("Location:?route=inventory/licenses"); exit;
+		break;
+
 	case "addLicenseAssignment":
 		isAuthorized("assetLicense"); $status = License::assignAsset($_POST);
 		break;

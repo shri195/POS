@@ -3,7 +3,9 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 			<h1 class="pull-left"><?php _e('Licenses'); ?><small> <?php _e('Manage licenses'); ?></small></h1>
-			<div class="pull-right"><?php if(in_array("addLicense",$perms)) { ?><a class="btn btn-primary btn-sm" href="?route=inventory/licenses/create"><i class="fa fa-certificate"></i> <?php _e('NEW LICENSE'); ?></a><?php } ?></div>
+			<div class="pull-right"><?php if(in_array("addLicense",$perms)) { ?><a class="btn btn-primary btn-sm" href="?route=inventory/licenses/create"><i class="fa fa-certificate"></i> <?php _e('NEW LICENSE'); ?></a><?php } ?>
+			<?php if(in_array("addLicense",$perms)) { ?><a class="btn btn-primary btn-sm" href="?route=inventory/licenses/import"><i class="fa fa-barcode"></i> <?php _e('IMPORT LICENSE'); ?></a><?php } ?>
+			</div>
 			<div style="clear:both"></div>
 	</section>
 	<!-- Main content -->
@@ -24,7 +26,7 @@
 										<th><?php _e('Client'); ?></th>
 										<th><?php _e('Name'); ?></th>
 										<th><?php _e('Purchase Date'); ?></th>
-										<th><?php _e('Warrenty Date'); ?></th>
+										<th><?php _e('Expirory Date'); ?></th>
 										<th><?php _e('Status'); ?></th>
 										<th class="text-right"></th>
 	                                </tr>
