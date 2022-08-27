@@ -3,7 +3,9 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 			<h1 class="pull-left"><?php _e('Assets'); ?><small> <?php _e('Manage assets'); ?></small></h1>
-			<div class="pull-right"><?php if(in_array("addAsset",$perms)) { ?><a class="btn btn-primary btn-sm" href="?route=inventory/assets/create"><i class="fa fa-barcode"></i> <?php _e('NEW ASSET'); ?></a><?php } ?></div>
+			<div class="pull-right"><?php if(in_array("addAsset",$perms)) { ?><a class="btn btn-primary btn-sm" href="?route=inventory/assets/create"><i class="fa fa-barcode"></i> <?php _e('NEW ASSET'); ?></a><?php } ?>
+			<?php if(in_array("addAsset",$perms)) { ?><a class="btn btn-primary btn-sm" href="?route=inventory/assets/import"><i class="fa fa-barcode"></i> <?php _e('IMPORT ASSET'); ?></a><?php } ?></div>
+
 			<div style="clear:both"></div>
 	</section>
 	<!-- Main content -->

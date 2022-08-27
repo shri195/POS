@@ -18,7 +18,10 @@ switch($_POST['action']) {
 	case "deleteAsset":
 		isAuthorized("deleteAsset"); $status = Asset::delete($_POST['id']);
         break;
-
+	case "importAsset":
+		$status = Asset::importAssets($_FILES);
+		header("Location:?route=inventory/assets"); exit;
+		break;
 
 	// projects
 	case "addProject":

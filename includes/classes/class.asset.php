@@ -64,6 +64,131 @@ class Asset extends App {
     	if ($lastid == "0") { return "11"; } else { logSystem("Asset Added - ID: " . $lastid); return "10"; }
     	}
 
+
+        function getArrayKey($param, $array) {
+            if($param!="SKIP") {
+                $k = array_search($param, $array);
+                if ($k === false) {
+                    //exit("key $param $k doesn't exist");
+                    return NULL;
+                }
+                return $k;
+            }
+        }
+
+    public static function importAssets($data) {
+        global $database;
+        if ( isset($data['assetsImport']) && $data['assetsImport']['size'] > 0 ) {
+            $file = fopen($data['assetsImport']['tmp_name'],"r");
+            $importArray=array(
+                "category"=>"Category",
+                "maincategory"=>"Maincategory",
+                "warrenty_expiry_date"=>"Warrenty Expiry Date",
+                "client"=>"Client",
+                "admin"=>"Admin",
+                "manufacturer"=>"Manufacturer",
+                "department"=>"Department",
+                "model"=>"Model",
+                "supplier"=>"Supplier",
+                "status"=>"Status",
+                "purchase_date"=>"Purchase Date",
+                "tag"=>"Tag",
+                "name"=>"Name",
+                "serial"=>"Serial",
+                "notes"=>"Notes",
+                "location"=>"Location",
+                "purchase_order"=>"Purchase Order",
+                "value"=>"Value"
+            );
+
+            $row = 1;
+            // Begin processing the rows:
+            while (($data = fgetcsv($file, 1000, ",")) !== FALSE) {
+                // Assign array keys to headers:
+                if($row==1) {
+                    $headerArray = $data;
+                }
+                if($row > 1) {
+                    $rowArray = array();
+                    foreach($importArray as $key=>$name) {
+                        $index = array_search($name, $headerArray);
+                        $rowArray[$key] = str_replace(",", "\,", str_replace("'", "\'", ($index === NULL)? '' : $data[$index]));
+                    }
+
+                    $categoryid = 0;
+                    $manufacturerid = 0;
+                    $modelid = 0;
+                    $supplierid = 0;
+                    $locationid = 0;
+                    $clientid = 0;
+
+                    if(isset($rowArray['admin'])) {
+                        $adminid = $database->get("people", "id", [ "name" => $rowArray['admin'] ]);
+                    }
+
+                    if(isset($rowArray['client'])) {
+                        $clientid = $database->get("clients", "id", [ "name" => $rowArray['client'] ]);
+                    }
+
+                    if(isset($rowArray['department'])) {
+                        $departmentid = $database->get("departments", "id", [ "name" => $rowArray['department'] ]);
+                    }
+
+                    if(isset($rowArray['category'])) {
+                        $categoryid = $database->get("assetcategories", "id", [ "name" => $rowArray['category'] ]);
+                        if($categoryid == "") $categoryid = $database->insert("assetcategories", [ "name" => $rowArray['category'], "color" => rand_color() ]);
+                    }
+
+                    if(isset($rowArray['manufacturer'])) {
+                        $manufacturerid = $database->get("manufacturers", "id", [ "name" => $rowArray['manufacturer'] ]);
+                        if($manufacturerid == "") $manufacturerid = $database->insert("manufacturers", [ "name" => $rowArray['manufacturer'] ]);
+                    }
+
+                    if(isset($rowArray['model'])) {
+                        $modelid = $database->get("models", "id", [ "name" => $rowArray['model'] ]);
+                        if($modelid == "") $modelid = $database->insert("models", [ "name" => $rowArray['model'] ]);
+                    }
+
+                    if(isset($rowArray['supplier'])) {
+                        $supplierid = $database->get("suppliers", "id", [ "name" => $rowArray['supplier'] ]);
+                        if($supplierid == "") $supplierid = $database->insert("suppliers", [ "name" => $rowArray['supplier'] ]);
+                    }
+
+                    if(isset($rowArray['location'])) {
+                        $locationid = $database->get("locations", "id", [ "AND" => [ "name" => $rowArray['location'], "clientid" => $clientid ] ]);
+                        if($locationid == "") $locationid = $database->insert("locations", [ "name" => $rowArray['location'], "clientid" => $clientid ]);
+                    }
+
+                    if(isset($rowArray['status'])) {
+                        $statusid = $database->get("labels", "id", [ "name" => $rowArray['status'] ]);
+                    }
+
+                    $lastid = $database->insert("assets", [
+                        "categoryid" => $categoryid,
+                        "maincategory"=>$rowArray['maincategory'],
+                        "warrenty_expiry_date"=>$rowArray['warrenty_expiry_date'],
+                        "adminid" => $adminid,
+                        "clientid" => $clientid,
+                        "manufacturerid" => $manufacturerid,
+                        "departmentId" => $departmentid,
+                        "modelid" => $modelid,
+                        "supplierid" => $supplierid,
+                        "statusid" => $statusid,
+                        "purchase_date" => $rowArray['purchase_date'],
+                        "tag" => $rowArray['tag'],
+                        "name" => $rowArray['name'],
+                        "serial" => $rowArray['serial'],
+                        "notes" => $rowArray['notes'],
+                        "locationid" => $locationid,
+                        "purchase_order" => $rowArray['purchase_order'],
+                        "value" => $rowArray['value'],
+                    ]);
+                }
+                $row++;
+            }
+        }
+    }
+
     public static function edit($data) {
     	global $database;
 

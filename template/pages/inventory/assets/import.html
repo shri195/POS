@@ -1,0 +1,49 @@
+<!-- Right side column. Contains the navbar and content of the page -->
+<aside class="right-side">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1><?php _e('Assets'); ?><small> <?php _e('Manage assets'); ?></small></h1>
+		<ol class="breadcrumb"><li><a href="?route=dashboard"><i class="fa fa-dashboard"></i> <?php _e('Home'); ?></a></li><li><?php _e('Inventory'); ?></li><li><a href="?route=inventory/assets"><?php _e('Assets'); ?></a></li><li class="active"><?php _e('Import'); ?></li></ol>
+	</section>
+
+	<!-- Main content -->
+	<section class="content">
+		<?php if(!empty($statusmessage)): ?>
+				<div class="row"><div class='col-md-12'><div class="alert alert-<?php print $statusmessage["type"]; ?> alert-auto" role="alert"><?php print __($statusmessage["message"]); ?></div></div></div>
+		<?php endif; ?>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box box-primary">
+          			<div class="box-header with-border"><h3 class="box-title"><?php _e('Import New Asset'); ?></h3></div><!-- /.box-header -->
+                    <div class="box-body">
+						<div class="container-fluid">
+						<div class="row">
+							<form role="form" method="post" class="" enctype="multipart/form-data">
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="tag"><?php _e('Asset Import'); ?> *</label>
+										<input type="file" class="form-control" id="assetsImport" name="assetsImport" required>
+									</div>								
+								</div>
+
+								<div class="col-md-12">
+									<div class="form-group">
+										<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> <?php _e('Upload CSV'); ?></button>
+										<span><a href="/pos/assets.csv" class="btn btn-primary">Click here to Download sample CSV</a></span>
+									</div>
+								</div>
+
+								<input type="hidden" name="action" value="importAsset">
+								<input type="hidden" name="route" value="inventory/assets/import">
+								<input type="hidden" name="routeid" value="">
+
+							</form><!-- /.form -->
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!-- /.content -->
+</aside><!-- /.right-side -->
