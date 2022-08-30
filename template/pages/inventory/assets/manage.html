@@ -19,16 +19,9 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li <?php if ($section == "") echo 'class="active"'; ?> ><a href="#tab-summary" data-toggle="tab"><?php _e('Summary'); ?></a></li>
-			  <?php if(in_array("viewIssues",$perms)) { ?><li <?php if ($section == "issues") echo 'class="active"'; ?> ><a href="#tab-issues" data-toggle="tab"><?php _e('Issues'); ?></a></li><?php } ?>
-			  <?php if(in_array("viewTickets",$perms)) { ?><li <?php if ($section == "tickets") echo 'class="active"'; ?> ><a href="#tab-tickets" data-toggle="tab"><?php _e('Tickets'); ?></a></li><?php } ?>
-			  <?php if(in_array("viewFiles",$perms)) { ?><li <?php if ($section == "files") echo 'class="active"'; ?> ><a href="#tab-files" data-toggle="tab"><?php _e('Files'); ?></a></li><?php } ?>
               <?php if(in_array("editAsset",$perms)) { ?><li <?php if ($section == "edit") echo 'class="active"'; ?> ><a href="#tab-edit" data-toggle="tab"><?php _e('Edit Asset'); ?></a></li><?php } ?>
 
               <div class="btn-group pull-right" style="padding:6px;">
-                    <?php if(in_array("addIssue",$perms)) { ?><a data-toggle='tooltip' title='<?php _e('New Issue'); ?>' class="btn btn-primary btn-sm " href="#" onClick='showM("?modal=issues/add&reroute=inventory/assets/manage&routeid=<?php echo $asset['id']; ?>&clientid=<?php echo $asset['clientid']; ?>&assetid=<?php echo $asset['id']; ?>&section=issues");return false'><?php _e('New Issue'); ?></a><?php } ?>
-                    <?php if(in_array("addTicket",$perms)) { ?><a data-toggle='tooltip' title='<?php _e('New Ticket'); ?>' class="btn btn-default btn-sm " href="#" onClick='showM("?modal=tickets/add&reroute=inventory/assets/manage&routeid=<?php echo $asset['id']; ?>&clientid=<?php echo $asset['clientid']; ?>&assetid=<?php echo $asset['id']; ?>&section=tickets");return false'><i class="fa fa-tag"></i></a><?php } ?>
-                    <?php if(in_array("addCredential",$perms)) { ?><a data-toggle='tooltip' title='<?php _e('New Credential'); ?>' class="btn btn-default btn-sm " href="#" onClick='showM("?modal=credentials/add&section=&reroute=inventory/assets/manage&routeid=<?php echo $asset['id']; ?>&assetid=<?php echo $asset['id']; ?>&clientid=<?php echo $asset['clientid']; ?>");return false'><i class="fa fa-asterisk"></i></a><?php } ?>
-					<?php if(in_array("uploadFile",$perms)) { ?><a data-toggle='tooltip' title='<?php _e('Upload File'); ?>' class="btn btn-default btn-sm " href="#" onClick='showM("?modal=files/upload&reroute=inventory/assets/manage&routeid=<?php echo $asset['id']; ?>&clientid=<?php echo $asset['clientid']; ?>&assetid=<?php echo $asset['id']; ?>&section=files");return false'><i class="fa fa-upload"></i></a><?php } ?>
 					<?php if(in_array("licenseAsset",$perms)) { ?><a data-toggle='tooltip' title='<?php _e('Assign License'); ?>' class="btn btn-default btn-sm " href="#" onClick='showM("?modal=assets/assignLicense&section=&reroute=inventory/assets/manage&routeid=<?php echo $asset['id']; ?>");return false'><i class="fa fa-thumb-tack"></i></a><?php } ?>
                 </div>
 
@@ -139,49 +132,6 @@
 					</div>
 
 					<div class="col-xs-8">
-						<div class="box box-primary">
-		                    <div class="box-header">
-								<h3 class="box-title"><?php _e('Credentials'); ?></h3>
-								<div class="pull-right box-tools">
-									<button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-				                </div>
-							</div>
-		                    <div class="box-body">
-								<div class="table-responsive">
-			                        <table class="table table-striped table-hover">
-			                            <thead>
-			                                <tr>
-			                                    <th><?php _e('Type'); ?></th>
-			                                    <th><?php _e('Username'); ?></th>
-												<th><?php _e('Password'); ?></th>
-												<th class="text-right"></th>
-			                                </tr>
-			                            </thead>
-			                            <tbody>
-											<?php
-											foreach ($credentials as $credential) {
-			                                echo "<tr>";
-			                                    echo "<td>".$credential['type']."</td>";
-			                                    echo "<td>".$credential['username']."</td>";
-												echo "<td>";
-													if(in_array("viewCredential",$perms)) echo "<a href='#' onClick='showM(\"?modal=credentials/view&reroute=inventory/assets/manage&routeid=".$asset['id']."&id=".$credential['id']."&section=\");return false' class='btn-right text-dark'>".__("Click to view")."</a>";
-												echo "</td>";
-												echo "<td>
-														<div class='pull-right'>";
-															if(in_array("viewCredential",$perms)) echo "<a href='#' onClick='showM(\"?modal=credentials/view&reroute=inventory/assets/manage&routeid=".$asset['id']."&id=".$credential['id']."&section=\");return false' class='btn-right text-dark'><i class='fa fa-eye'></i></a>&nbsp;";
-															if(in_array("editCredential",$perms)) echo "<a href='#' onClick='showM(\"?modal=credentials/edit&reroute=inventory/assets/manage&routeid=".$asset['id']."&id=".$credential['id']."&section=\");return false' class='btn-right text-dark'><i class='fa fa-edit'></i></a>&nbsp;";
-															if(in_array("deleteCredential",$perms)) echo "<a href='#' onClick='showM(\"?modal=credentials/delete&reroute=inventory/assets/manage&routeid=".$asset['id']."&id=".$credential['id']."&section=\");return false' class='btn-right text-red'><i class='fa fa-trash-o'></i></a>";
-												 echo "</div>
-													  </td>";
-			                                echo "</tr>";
-											}
-											?>
-										</tbody>
-									</table>
-								</div>
-								<?php if(empty($credentials)) echo __("There are no credentials to display."); ?>
-							</div>
-						</div>
 						<div class="box box-primary">
 		                    <div class="box-header">
 								<h3 class="box-title"><?php _e('Assigned Licenses'); ?></h3>
