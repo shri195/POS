@@ -1,3 +1,3 @@
-License Tag,Name,Client,Category,Department,Serial,Purchase Date,Expirory Date,Purchase Order,Status,Supplier,Notes
-IT5-3,Ganesh1,Client Inc.,Operating Systems,IT,10701,2021-12-25,2022-12-25,3123,Pending,Amazon,This is test
-IT6-4,Shrikant2,Client Inc.,Operating Systems,IT,10702,2021-12-25,2022-12-31,3143,Pending,Flipkart,This is test
+Name,Quantity,Client,Category,Department,Serial,Purchase Date,Expiry Date,Purchase Order,Status,Supplier,Notes
+Ganesh1,25,Client Inc.,Operating Systems,IT,10701,2021-12-25,2022-12-25,3123,Pending,Amazon,This is test
+Shrikant2,30,Client Inc.,Operating Systems,IT,10702,2021-12-25,2022-12-31,3143,Pending,Flipkart,This is test
