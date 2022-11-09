@@ -59,7 +59,7 @@
 											<td><?php echo getSingleValue('locations','name',$asset['locationid']); ?></td>
 										</tr>
 										<tr>
-											<td><b><?php _e('Company Name'); ?></b></td>
+											<td><b><?php _e('Company'); ?></b></td>
 											<td><?php if(in_array("manageClient",$perms)) { ?><a href="?route=clients/manage&id=<?php echo $asset['clientid']; ?>"><?php echo getSingleValue('clients','name',$asset['clientid']); ?></a><?php } else echo getSingleValue('clients','name',$asset['clientid']); ?></td>
 										</tr>
 
